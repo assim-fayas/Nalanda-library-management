@@ -10,7 +10,10 @@ const register = async (req, res, next) => {
     const user = await User.create(req.body);
 
     // Return a success response with the created user
-    res.status(201).json({ status: "success", data: user });
+    res.status(201).json({
+      status: "success",
+      data: { id: user._id, name: user.name, email: user.email },
+    });
   } catch (err) {
     // Pass the error to the next middleware
     next(err);
@@ -32,7 +35,11 @@ const login = async (req, res, next) => {
 
     // Find user by email and select password field
     const user = await User.findOne({ email }).select("+password");
-
+    if (!user) {
+      return res.status(401).json({
+        message: "Incorrect email ",
+      });
+    }
     // Check if user exists and password is correct
     if (!user || !(await user.correctPassword(password, user.password))) {
       return res.status(401).json({

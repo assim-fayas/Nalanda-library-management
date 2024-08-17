@@ -103,7 +103,11 @@ const deleteBook = async (req, res, next) => {
     if (!book) return res.status(404).json({ message: "Book not found" });
 
     // Return a success response with no content.
-    res.status(204).json({ status: "success", data: null });
+    res.status(204).json({
+      status: "success",
+      data: null,
+      message: "Book deleted successfully",
+    });
   } catch (err) {
     // Pass the error to the next middleware function.
     next(err);

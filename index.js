@@ -1,6 +1,7 @@
 //Nalanda Library Management System
 const express = require("express");
 const cookieparser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const app = express();
 
 const authRoutes = require("./routes/authRoutes");
@@ -14,6 +15,7 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 connectDB.dbconnect();
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieparser());
 app.use(express.json());
 
