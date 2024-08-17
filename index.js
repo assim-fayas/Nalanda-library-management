@@ -22,6 +22,10 @@ app.use(express.json());
 // Swagger documentation route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+//schedules cron job
+const job = require("./config/job");
+job.start();
+
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
