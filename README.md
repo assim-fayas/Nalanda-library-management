@@ -56,10 +56,12 @@ The system is built using **Node.js, Express,** and **MongoDB**, and includes JW
      -Create a .env file in the root directory with the following content:
 
       PORT=3001
+     
       MONGODB_URI=your-mongodb-uri
+     
       JWT_SECRET=your-secret-key
 
-   4. **Run the application
+   5. **Run the application
        -npm start
 
      The application will run on http://localhost:3001
