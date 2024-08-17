@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Nalanda Library Management System** is a backend project designed to manage a library's operations, such as user management, book management, borrowing system, and generating reports. This system offers both RESTful and GraphQL APIs to perform the necessary operations.
+The **Nalanda Library Management System** is a backend project designed to manage a library's operations, such as user management, book management, borrowing system, and generating reports. This system offers RESTful APIs to perform the necessary operations.
 
 The system is built using **Node.js, Express,** and **MongoDB**, and includes JWT-based authentication and role-based access control. The project also utilizes the MongoDB aggregation framework to generate reports.
 
@@ -32,7 +32,7 @@ The system is built using **Node.js, Express,** and **MongoDB**, and includes JW
 ## 🛠 Tech Stack
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
-- **APIs**: RESTful API, GraphQL API
+- **APIs**: RESTful API
 - **Authentication**: JWT-based authentication with role-based access control
 - **Documentation**: Swagger for RESTful API documentation
 
@@ -74,10 +74,6 @@ The RESTful API is documented using Swagger. You can view the documentation at t
 
 - [Swagger API Docs](https://nalanda-library-management-nvis.onrender.com/api-docs)
 
-#### GraphQL API
-The GraphQL API is accessible at:
-
-- `http://localhost:3001/graphql` (locally)
 
 ### 🧪 Testing
 To run tests, use the following command:
@@ -95,8 +91,6 @@ If you wish to contribute to the project, feel free to fork the repository and s
 This project is licensed under the MIT License.
 
 
-### Instructions:
-- Copy the above Markdown content and paste it into your `README.md` file in your GitHub repository.
-- This Markdown formatting includes links, code blocks, and emojis, making your README section clear and attractive.
+
 
    
