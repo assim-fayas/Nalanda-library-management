@@ -1,3 +1,5 @@
+// borrowRecord model
+
 const mongoose = require("mongoose");
 
 const borrowRecordSchema = new mongoose.Schema({
@@ -15,7 +17,15 @@ const borrowRecordSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  returnedAt: Date,
+  returnedAt: {
+    type: Date,
+    validate: {
+      validator: function (value) {
+        return value >= this.borrowedAt;
+      },
+      message: "Return date must be after borrow date",
+    },
+  },
 });
 
 module.exports = mongoose.model("BorrowRecord", borrowRecordSchema);
