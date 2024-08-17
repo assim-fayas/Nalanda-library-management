@@ -8,7 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const bookRoutes = require("./routes/bookRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 const borrowRoutes = require("./routes/borrowRoutes");
-
+const { swaggerUi, swaggerDocs } = require("./config/swagger");
 require("dotenv").config();
 
 //database connection
@@ -18,6 +18,9 @@ connectDB.dbconnect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieparser());
 app.use(express.json());
+
+// Swagger documentation route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //routes
 app.use("/api/auth", authRoutes);
