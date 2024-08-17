@@ -107,7 +107,6 @@ const getBookAvailability = async (req, res, next) => {
       {
         // Sort the books by available copies, highest first.
         $sort: { availableCopies: -1 },
-        $sort: { availableCopies: -1 }, // Sort by available copies, highest first
       },
     ]);
 

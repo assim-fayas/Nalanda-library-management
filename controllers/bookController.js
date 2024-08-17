@@ -3,6 +3,12 @@ const Book = require("../models/book");
 // Creates a new book in the database.
 const createBook = async (req, res, next) => {
   try {
+    // Check if the book already exists in the database.
+    const existingBook = await Book.findOne({ title: req.body.title });
+    if (existingBook) {
+      return res.status(400).json({ message: "Book already exists" });
+    }
+
     // Create a new book using the request body.
     const book = await Book.create(req.body);
 
@@ -15,7 +21,6 @@ const createBook = async (req, res, next) => {
 };
 
 // Retrieves a list of all books in the database. Allows for pagination and filtering by genre and author.
-
 const getAllBooks = async (req, res, next) => {
   try {
     // Extract the page and limit from the request query.
@@ -51,7 +56,6 @@ const getAllBooks = async (req, res, next) => {
 };
 
 //  Retrieves a book from the database based on its ID.
-
 const getBook = async (req, res, next) => {
   try {
     // Find the book by its ID.
@@ -71,7 +75,6 @@ const getBook = async (req, res, next) => {
 };
 
 //  Updates a book in the database based on its ID.
-
 const updateBook = async (req, res, next) => {
   try {
     // Find the book by its ID and update it with the new data from the request body.

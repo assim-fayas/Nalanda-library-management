@@ -6,6 +6,47 @@ const jwt = require("jsonwebtoken");
 // Registers a new user.
 const register = async (req, res, next) => {
   try {
+    const { name, email, password } = req.body;
+
+    //check if any field is empty
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "Please provide name, email and password",
+      });
+    }
+    //check the the name does not contain only spaces
+    if (name.trim().length === 0) {
+      return res.status(400).json({ message: "Name cannot be empty" });
+    }
+
+    // check the name has minimum four charecter
+    if (name.trim().length < 4) {
+      return res
+        .status(400)
+        .json({ message: "Name should have at least 4 charecters" });
+    }
+
+    //check the email is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Invalid email address" });
+    }
+
+    // check if email alredy exist
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "Email already exist",
+      });
+    }
+
+    //check the password has minimum 5 charecter
+    if (password.trim().length < 5) {
+      return res
+        .status(400)
+        .json({ message: "Password should have at least 5 charecters" });
+    }
+
     // Create a new user using the request body
     const user = await User.create(req.body);
 
