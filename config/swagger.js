@@ -18,14 +18,14 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3001",
+        url: ["https://nalanda-library-management-nvis.onrender.com"],
         description: "Development server",
       },
     ],
     components: {
       securitySchemes: {
         bearerAuth: {
-          type: "http",
+          type: "https",
           scheme: "bearer",
           bearerFormat: "JWT",
         },
