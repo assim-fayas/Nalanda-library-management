@@ -22,7 +22,7 @@ app.use(express.json());
 // Swagger documentation route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-//schedules cron job
+//scheduler to keep the server alive.Not a part of the project.
 const job = require("./config/job");
 job.start();
 

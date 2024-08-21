@@ -8,7 +8,7 @@ function pingServer() {
   console.log("Pinging server to keep it alive...");
 
   const options = {
-    hostname: "ecommerce-aoor.onrender.com",
+    hostname: "nalanda-library-management-nvis.onrender.com",
     method: "GET",
     timeout: 60000,
   };
